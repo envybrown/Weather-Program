@@ -4,7 +4,10 @@
 #include <limits>
 #include <string>
 using namespace std;
-
+//intro function declaration
+void intro();
+//collection function declaration 
+void collection(double& temp,double& windSpeed, double& dewPoint);
 //wind chill function declaration
 void calc_windChill(double& temp, double& windSpeed, double& windChill);
 //cloud base function declaration
@@ -17,31 +20,11 @@ int main()
 {
     double temp, windSpeed, dewPoint, windChill, cloudBase;
     
-    //introduction
-    cout<<"This code will determine wind chill and cloud base.";
-    //ask user for variables 
-    cout<<"\nPlease provide..." << endl;
-   
-    //collect temp
-    cout<<"\nDegrees (Fahrenheit): ";
-    while (!(cin>>temp)){
-        error();
-        cout<<"Degrees (Fahrenheit): ";
-    }
+//introduction
+    intro();
     
-    //collect wind speed
-    cout<<"Wind Speed (mph): ";
-    while (!(cin>>windSpeed)){
-        error();
-        cout<<"Wind Speed (mph): ";
-    }
-    
-    //collect dew point
-    cout<<"Dew Point: ";
-    while (!(cin>>dewPoint)){
-        error();
-        cout<<"Dew Point: ";
-    }
+//ask user for variables and collect them
+    collection(temp, windSpeed, dewPoint);
     
 //show wind chill
 cout<<"\nWind chill:\n";  
@@ -54,8 +37,35 @@ cout<<"\n\nCloud base:\n";
     return 0;
 }
 
+//intro definition
+    void intro(){
+        cout<<"This code will determine wind chill and cloud base.";
+        cout<<"\nPlease provide..." << endl;
+}
+
+//collection definition
+void collection(double& temp,double& windSpeed, double& dewPoint){
+    cout<<"\nDegrees (Fahrenheit): ";
+    while (!(cin>>temp)){
+        error();
+        cout<<"Degrees (Fahrenheit): ";
+    }
+    
+    cout<<"Wind Speed (mph): ";
+    while (!(cin>>windSpeed)){
+        error();
+        cout<<"Wind Speed (mph): ";
+    }
+    
+    cout<<"Dew Point: ";
+    while (!(cin>>dewPoint)){
+        error();
+        cout<<"Dew Point: ";
+    }
+}
+
 //wind chill definition
-void calc_windChill(double& temp, double& windSpeed, double& windChill) { 
+void calc_windChill(double& temp, double& windSpeed, double& windChill){ 
 windChill=35.74+(0.6215*temp)-(35.75*pow(windSpeed, 0.16))+(0.4275*temp*pow(windSpeed, 0.16));
     cout<<windChill;
 }
