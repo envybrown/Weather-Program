@@ -1,0 +1,76 @@
+#include <iostream>
+#include <cmath>
+#include <sstream>
+#include <limits>
+#include <string>
+using namespace std;
+
+//wind chill function declaration
+void calc_windChill(double& temp, double& windSpeed, double& windChill);
+//cloud base function declaration
+void calc_cloudBase(double& temp, double& dewPoint, double& cloudBase);
+//error function declaration
+void error();
+
+//main code... weather calculator 
+int main()
+{
+    double temp, windSpeed, dewPoint, windChill, cloudBase;
+    
+    //introduction
+    cout<<"This code will determine wind chill and cloud base.";
+    //ask user for variables 
+    cout<<"\nPlease provide..." << endl;
+   
+    //collect temp
+    cout<<"\nDegrees (Fahrenheit): ";
+    while (!(cin>>temp)){
+        error();
+        cout<<"Degrees (Fahrenheit): ";
+    }
+    
+    //collect wind speed
+    cout<<"Wind Speed (mph): ";
+    while (!(cin>>windSpeed)){
+        error();
+        cout<<"Wind Speed (mph): ";
+    }
+    
+    //collect dew point
+    cout<<"Dew Point: ";
+    while (!(cin>>dewPoint)){
+        error();
+        cout<<"Dew Point: ";
+    }
+    
+//show wind chill
+cout<<"\nWind chill:\n";  
+    calc_windChill(temp, windSpeed, windChill);
+    
+//show cloud base
+cout<<"\n\nCloud base:\n";
+    calc_cloudBase(temp, dewPoint, cloudBase);
+    
+    return 0;
+}
+
+//wind chill definition
+void calc_windChill(double& temp, double& windSpeed, double& windChill) { 
+windChill=35.74+(0.6215*temp)-(35.75*pow(windSpeed, 0.16))+(0.4275*temp*pow(windSpeed, 0.16));
+    cout<<windChill;
+}
+
+//cloud base definition 
+void calc_cloudBase(double& temp, double& dewPoint, double& cloudBase){
+cloudBase=1000*((temp-dewPoint)/4.4);
+    cout<<cloudBase;
+}
+
+//error definition... user may only enter numbers
+void error(){
+    if (cin.fail()) {
+        cin.clear();                
+        cin.ignore(1000, '\n');     
+        cout << "Error. Please try again.\n";
+    }
+}
