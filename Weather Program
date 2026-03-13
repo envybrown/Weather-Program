@@ -9,9 +9,9 @@ void intro();
 //collection function declaration 
 void collection(double& temp,double& windSpeed, double& dewPoint);
 //wind chill function declaration
-void calc_windChill(double& temp, double& windSpeed, double& windChill);
+float calc_windChill(double& temp, double& windSpeed, double& windChill);
 //cloud base function declaration
-void calc_cloudBase(double& temp, double& dewPoint, double& cloudBase);
+float calc_cloudBase(double& temp, double& dewPoint, double& cloudBase);
 //error function declaration
 void error();
 
@@ -65,15 +65,17 @@ void collection(double& temp,double& windSpeed, double& dewPoint){
 }
 
 //wind chill definition
-void calc_windChill(double& temp, double& windSpeed, double& windChill){ 
+float calc_windChill(double& temp, double& windSpeed, double& windChill){ 
 windChill=35.74+(0.6215*temp)-(35.75*pow(windSpeed, 0.16))+(0.4275*temp*pow(windSpeed, 0.16));
     cout<<windChill;
+    return 0;
 }
 
 //cloud base definition 
-void calc_cloudBase(double& temp, double& dewPoint, double& cloudBase){
+float calc_cloudBase(double& temp, double& dewPoint, double& cloudBase){
 cloudBase=1000*((temp-dewPoint)/4.4);
     cout<<cloudBase;
+    return 0;
 }
 
 //error definition... user may only enter numbers
