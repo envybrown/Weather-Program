@@ -3,15 +3,21 @@
 #include <sstream>
 #include <limits>
 #include <string>
+
 using namespace std;
+
 //intro function declaration
 void intro();
+
 //collection function declaration 
 void collection(double& temp,double& windSpeed, double& dewPoint);
+
 //wind chill function declaration
 float calc_windChill(double& temp, double& windSpeed, double& windChill);
+
 //cloud base function declaration
 float calc_cloudBase(double& temp, double& dewPoint, double& cloudBase);
+
 //error function declaration
 void error();
 
